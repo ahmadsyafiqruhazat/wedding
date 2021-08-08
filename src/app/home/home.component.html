@@ -48,18 +48,18 @@
         </div>
       </div>
       <!-- date and time -->
-      <div class="fade-in-slow px-10">
-        <div class="font-cormorant-garamond text-xl pt-8">
-          <div class="">Walimatul Urus / Wedding Invitation</div>
+      <div class="fade-in-slow px-10 text-center">
+        <div class="font-cormorant-garamond text-lg pt-8 tracking-widest">
+          <div class="">&centerdot; DATE &centerdot;</div>
         </div>
         <div class="font-cormorant-garamond text-2xl pt-3">
           04 September 2021<br />Saturday<br />11:00am - 4:00pm
         </div>
       </div>
       <!-- venue -->
-      <div class="fade-in-slow px-10">
-        <div class="font-cormorant-garamond text-xl pt-8">
-          <div class="">Venue</div>
+      <div class="fade-in-slow px-10 text-center">
+        <div class="font-cormorant-garamond text-lg pt-8 tracking-widest">
+          <div class="">&centerdot; VENUE &centerdot;</div>
         </div>
         <div class="font-cormorant-garamond text-2xl pt-3">
           Waterfall Lounge @ Furama Riverfront<br />405 Havelock Rd<br />Singapore 169633
@@ -74,8 +74,8 @@
         </div>
       </div>
     </section>
-    <section id="details" class="fade-in-slow px-10 ">
-      <div class="font-cormorant-garamond text-xl pt-8">The Schedule</div>
+    <section id="details" class="fade-in-slow px-10 text-center">
+      <div class="font-cormorant-garamond text-lg tracking-widest">&centerdot; SCHEDULE &centerdot;</div>
       <div class="" *ngFor="let item of schedule">
         <div class="pt-2 grid grid-cols-3 gap-4">
           <div class="font-cormorant-garamond text-xl ">
@@ -166,9 +166,8 @@
                 block
                 text-base
                 font-medium
-
               "
-              >Will you be vaccinated by 4th September?</label
+              >Will you be fully vaccinated two weeks before 4th September?</label
             >
             <select
               [(ngModel)]="vaccinated"
