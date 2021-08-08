@@ -1,0 +1,121 @@
+<div>
+
+</div>
+<div class="container max-w-screen-sm mx-auto">
+  <header>
+    <!-- <div class="text-center font-cormorant-garamond py-8 text-3xl">
+
+      Sharmin & Syafiq
+    </div> -->
+    <nav>
+      <ul class="flex space-x-4 pt-8 px-6">
+        <li class="flex-1 text-center font-cormorant-garamond hover:underline">
+          <a href="#details">Event Details</a>
+        </li>
+        <li class="flex-1 text-center font-cormorant-garamond hover:underline">
+          <a
+            href="https://www.google.com/maps/dir//furama+riverfront/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31da1977b165dfcd:0x939e0c251389175e?sa=X&ved=2ahUKEwjb55iNv5_yAhXUfH0KHe36C8oQ9RcweHoFCMEBEAQ">Directions</a>
+        </li>
+        <li class="flex-1 text-center font-cormorant-garamond hover:underline">
+          <a href="#">Livestream</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="fade-in-slow">
+      <div class="relative flex justify-center items-center pt-8">
+        <!-- <div appParallax [max]="1000" [ratio]="-0.5" id="title1" class="fixed text-center font-cormorant-garamond py-8 text-3xl z-10 -mb-24 text-white" style="top: calc(50% - 300px);">
+
+          Sharmin & Syafiq<br />are getting<br />married.
+        </div> -->
+        <div id="title1" class="absolute text-center font-cormorant-garamond py-8 text-3xl z-10 -mb-24 text-white" style="top: calc(50% - 40px);">
+          Sharmin & Syafiq<br />are getting<br />married.
+        </div>
+        <div class="max-w-xs">
+          <img src="assets/1.jpg" alt="">
+        </div>
+      </div>
+      <!-- date and time -->
+      <div class="fade-in-slow px-10">
+        <div class="font-cormorant-garamond text-lg pt-8">
+          <div class="text-gray-500">Walimatul Urus</div>
+          <div class="text-gray-700 pl-4">Wedding Invitation</div>
+        </div>
+        <div class="font-cormorant-garamond text-2xl pt-3">
+          Saturday, September<br />04, 2021<br />11:00am - 4:00pm
+        </div>
+      </div>
+      <!-- venue -->
+      <div class="fade-in-slow px-10">
+        <div class="font-cormorant-garamond text-lg pt-8 ">
+          <div class="text-gray-500">Venue</div>
+        </div>
+        <div class="font-cormorant-garamond text-2xl pt-3">
+          Furama Riverfront<br />405 Havelock Rd<br />Singapore 169633
+        </div>
+        <div class="font-cormorant-garamond py-8 text-xl text-beige pt-2 underline">
+          <a
+            href="https://www.google.com/maps/dir//furama+riverfront/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31da1977b165dfcd:0x939e0c251389175e?sa=X&ved=2ahUKEwjb55iNv5_yAhXUfH0KHe36C8oQ9RcweHoFCMEBEAQ">Get
+            Directions</a>
+        </div>
+      </div>
+    </section>
+    <section id="details" class="fade-in-slow px-10">
+      <div class="font-cormorant-garamond text-2xl pt-8">
+        The Schedule
+      </div>
+      <div class=" pt-6" *ngFor="let item of schedule">
+        <div class="font-cormorant-garamond text-lg pt-2 text-gray-700">
+          {{ item.name }}
+        </div>
+        <div class="font-cormorant-garamond text-lg pt-2 text-gray-500">
+          {{ item.time }}
+        </div>
+        <div class="font-cormorant-garamond text-base pt-2">
+          {{ item.detail }}
+        </div>
+      </div>
+    </section>
+    <section class="fade-in-slow px-10 pb-8">
+      <!-- <div class="font-cormorant-garamond text-2xl pt-8">
+        RSVP
+      </div> -->
+
+      <div class="relative flex justify-center items-center pt-8">
+        <div class="absolute text-center font-cormorant-garamond py-8 text-3xl z-10 -mb-24 text-white" style="top: calc(50% - 40px);">
+          <!-- image -->
+          RSVP
+        </div>
+        <div class="max-w-xs">
+          <img src="assets/2.jpg" alt="">
+        </div>
+      </div>
+      <div>
+        <form ngNoForm action="https://api.staticforms.xyz/submit" method="post">
+          <!-- Replace with accesKey sent to your email -->
+          <input type="hidden" name="accessKey" value="f942d721-68af-4e88-9a1e-229bb14c91e6"> <!-- Required -->
+          <div class="pt-2">
+            <label for="name" class="block text-sm font-medium font-cormorant-garamond text-gray-700">Name</label>
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <input type="text" name="name" id="name"
+                class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+            </div>
+          </div>
+          <div class="pt-2">
+            <label for="vaccinated" class="font-cormorant-garamond block text-sm font-medium text-gray-700">Will you be vaccinated by 4th September?</label>
+            <select [(ngModel)]="vaccinated" id="vaccinated" name="vaccinated" class="font-cormorant-garamond mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <option [ngValue]="'Yes'">Yes</option>
+              <option [ngValue]="'No'">No</option>
+            </select>
+          </div>
+          <input type="hidden" id="$isVaccinated" name="$isVaccinated" value="{{vaccinated}}">
+          <div class="pt-2">
+            <input value="Submit" type="submit" class="font-cormorant-garamond group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-beige hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"/>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+</div>
