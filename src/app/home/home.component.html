@@ -49,7 +49,7 @@
       </div>
       <!-- date and time -->
       <div class="fade-in-slow px-10 text-center">
-        <div class="font-cormorant-garamond text-lg pt-8 tracking-widest">
+        <div class="font-cormorant-garamond text-xl pt-11 tracking-widest">
           <div class="">&centerdot; DATE &centerdot;</div>
         </div>
         <div class="font-cormorant-garamond text-2xl pt-3">
@@ -58,14 +58,14 @@
       </div>
       <!-- venue -->
       <div class="fade-in-slow px-10 text-center">
-        <div class="font-cormorant-garamond text-lg pt-8 tracking-widest">
+        <div class="font-cormorant-garamond text-xl pt-11 tracking-widest">
           <div class="">&centerdot; VENUE &centerdot;</div>
         </div>
         <div class="font-cormorant-garamond text-2xl pt-3">
           Waterfall Lounge @ Furama Riverfront<br />405 Havelock Rd<br />Singapore 169633
         </div>
         <div
-          class="font-cormorant-garamond py-8 text-xl text-beige pt-2 underline"
+          class="font-cormorant-garamond pt-2 text-xl text-beige underline"
         >
           <a
             href="https://www.google.com/maps/dir//furama+riverfront/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31da1977b165dfcd:0x939e0c251389175e?sa=X&ved=2ahUKEwjb55iNv5_yAhXUfH0KHe36C8oQ9RcweHoFCMEBEAQ"
@@ -74,15 +74,15 @@
         </div>
       </div>
     </section>
-    <section id="details" class="fade-in-slow px-10 text-center">
-      <div class="font-cormorant-garamond text-lg tracking-widest">&centerdot; SCHEDULE &centerdot;</div>
+    <section id="details" class="fade-in-slow px-10 pt-11 text-center">
+      <div class="font-cormorant-garamond text-xl tracking-widest">&centerdot; SCHEDULE &centerdot;</div>
       <div class="" *ngFor="let item of schedule">
-        <div class="pt-2 grid grid-cols-3 gap-4">
-          <div class="font-cormorant-garamond text-xl ">
+        <div class="pt-3 grid grid-cols-3 gap-4">
+          <div class="font-cormorant-garamond text-xl text-right">
             {{ item.time }}
           </div>
-          <div class="col-span-2">
-            <div class="font-cormorant-garamond text-xl ">
+          <div class="col-span-2 text-left">
+            <div class="font-cormorant-garamond text-xl">
               {{ item.name }}
             </div>
             <div class="font-cormorant-garamond text-lg pt-2 italic">
