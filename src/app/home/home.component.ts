@@ -19,12 +19,12 @@ export class HomeComponent implements OnInit {
     },
     {
       name: "Groom's Walk In",
-      time: '11:45',
+      time: '11:45am',
       detail: '',
     },
     {
       name: "Bride's Walk In",
-      time: '11:50',
+      time: '11:50am',
       detail: 'Here comes the bride!',
     },
     {
