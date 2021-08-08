@@ -62,13 +62,13 @@
         The Schedule
       </div>
       <div class=" pt-6" *ngFor="let item of schedule">
-        <div class="font-cormorant-garamond text-xl pt-2 text-gray-700">
-          {{ item.name }}
+        <div class="pt-2 flex">
+          <div class="font-cormorant-garamond text-xl pr-4 text-gray-500">
+            {{ item.time }}
+          </div>
+          <div class="font-cormorant-garamond text-xl text-gray-700">{{ item.name }}</div>
         </div>
-        <div class="font-cormorant-garamond text-xl pt-2 text-gray-500">
-          {{ item.time }}
-        </div>
-        <div class="font-cormorant-garamond text-lg pt-2">
+        <div class="font-cormorant-garamond text-lg pt-2 italic">
           {{ item.detail }}
         </div>
       </div>
