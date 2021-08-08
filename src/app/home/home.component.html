@@ -1,9 +1,8 @@
 <div class="container max-w-screen-sm mx-auto">
   <header>
-    <!-- <div class="text-center font-cormorant-garamond py-8 text-3xl">
-
-      Sharmin & Syafiq
-    </div> -->
+    <div class="text-center font-cormorant-garamond pt-8 text-3xl">
+      <countdown *ngIf="!isDDay" [config]="countDownConfig"></countdown>
+    </div>
     <nav>
       <ul class="flex space-x-4 pt-8 px-6">
         <li class="flex-1 text-center font-cormorant-garamond hover:underline">
@@ -63,13 +62,13 @@
         The Schedule
       </div>
       <div class=" pt-6" *ngFor="let item of schedule">
-        <div class="font-cormorant-garamond text-lg pt-2 text-gray-700">
+        <div class="font-cormorant-garamond text-xl pt-2 text-gray-700">
           {{ item.name }}
         </div>
-        <div class="font-cormorant-garamond text-lg pt-2 text-gray-500">
+        <div class="font-cormorant-garamond text-xl pt-2 text-gray-500">
           {{ item.time }}
         </div>
-        <div class="font-cormorant-garamond text-base pt-2">
+        <div class="font-cormorant-garamond text-lg pt-2">
           {{ item.detail }}
         </div>
       </div>
@@ -92,15 +91,15 @@
         <form ngNoForm action="https://api.staticforms.xyz/submit" method="post">
           <!-- Replace with accesKey sent to your email -->
           <input type="hidden" name="accessKey" value="f942d721-68af-4e88-9a1e-229bb14c91e6"> <!-- Required -->
-          <div class="pt-2">
-            <label for="name" class="block text-sm font-medium font-cormorant-garamond text-gray-700">Name</label>
+          <div class="pt-4">
+            <label for="name" class="block text-base font-medium font-cormorant-garamond text-gray-700">Name</label>
             <div class="mt-1 relative rounded-md shadow-sm">
               <input type="text" name="name" id="name"
                 class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
             </div>
           </div>
           <div class="pt-2">
-            <label for="vaccinated" class="font-cormorant-garamond block text-sm font-medium text-gray-700">Will you be vaccinated by 4th September?</label>
+            <label for="vaccinated" class="font-cormorant-garamond block text-base font-medium text-gray-700">Will you be vaccinated by 4th September?</label>
             <select [(ngModel)]="vaccinated" id="vaccinated" name="vaccinated" class="font-cormorant-garamond mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               <option [ngValue]="'Yes'">Yes</option>
               <option [ngValue]="'No'">No</option>

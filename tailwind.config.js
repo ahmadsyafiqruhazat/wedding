@@ -12,10 +12,10 @@ module.exports = {
         'cormorant-garamond': ['"Cormorant Garamond"', 'serif']
       },
       colors: {
-        'beige': '#d67573',
+        'beige': '#ddcab9',
       },
       textColor: {
-        'beige': '#d67573',
+        'beige': '#ddcab9',
       }
     },
   },

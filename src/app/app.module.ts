@@ -8,6 +8,7 @@ import { ParallaxDirective } from './parallax.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { SuccessComponent } from './success/success.component';
 import { HomeComponent } from './home/home.component';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

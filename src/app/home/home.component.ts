@@ -65,7 +65,14 @@ export class HomeComponent implements OnInit {
     },
   ];
   vaccinated: string = '';
+  countDownConfig: any;
+  isDDay: any;
   constructor() {
+    this.countDownConfig = {
+      stopTime: new Date("2021/09/04").getTime(),
+      format: 'dd:hh:mm:ss'
+    }
+    this.isDDay = new Date() >= new Date("2021/09/04") ? true : false;
   }
   setVaccinated(val: any) {
     this.vaccinated = val;
