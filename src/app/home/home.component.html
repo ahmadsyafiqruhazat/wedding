@@ -1,6 +1,8 @@
 <div class="container max-w-screen-sm mx-auto">
   <header>
-    <div class="text-center font-cormorant-garamond pt-6 text-3xl text-beige">
+    <div class="text-center font-cormorant-garamond pt-6 text-3xl text-beige flex-col">
+      <countdown *ngIf="!isDDay" [config]="countDownConfigDays"></countdown>
+      <br/>
       <countdown *ngIf="!isDDay" [config]="countDownConfig"></countdown>
     </div>
     <nav>
