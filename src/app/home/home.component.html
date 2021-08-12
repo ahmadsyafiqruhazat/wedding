@@ -1,9 +1,23 @@
-<div class="container max-w-screen-sm mx-auto">
+<div *ngIf="data" class="container max-w-screen-sm mx-auto">
   <header>
-    <div class="text-center font-cormorant-garamond pt-6 text-3xl text-beige flex-col">
-      <countdown *ngIf="!isDDay" [config]="countDownConfigDays"></countdown>
-      <br/>
-      <countdown *ngIf="!isDDay" [config]="countDownConfig"></countdown>
+    <div
+      class="
+        text-center
+        font-cormorant-garamond
+        pt-6
+        text-3xl text-beige
+        flex-col
+      "
+    >
+      <countdown
+        *ngIf="!isDDay && data.date"
+        [config]="countDownConfigDays"
+      ></countdown>
+      <br />
+      <countdown
+        *ngIf="!isDDay && data.date"
+        [config]="countDownConfig"
+      ></countdown>
     </div>
     <nav>
       <ul class="flex space-x-4 pt-6 px-6">
@@ -11,13 +25,10 @@
           <a href="#details">Event Details</a>
         </li>
         <li class="flex-1 text-center font-cormorant-garamond hover:underline">
-          <a
-            href="https://www.google.com/maps/dir//furama+riverfront/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31da1977b165dfcd:0x939e0c251389175e?sa=X&ved=2ahUKEwjb55iNv5_yAhXUfH0KHe36C8oQ9RcweHoFCMEBEAQ"
-            >Directions</a
-          >
+          <a [attr.href]="data.directions">Directions</a>
         </li>
         <li class="flex-1 text-center font-cormorant-garamond hover:underline">
-          <a href="#">Livestream</a>
+          <a [attr.href]="data.livestream">Livestream</a>
         </li>
       </ul>
     </nav>
@@ -25,10 +36,6 @@
   <main>
     <section class="fade-in-slow">
       <div class="relative flex justify-center items-center pt-8">
-        <!-- <div appParallax [max]="1000" [ratio]="-0.5" id="title1" class="fixed text-center font-cormorant-garamond py-8 text-3xl z-10 -mb-24 text-white" style="top: calc(50% - 300px);">
-
-          Sharmin & Syafiq<br />are getting<br />married.
-        </div> -->
         <div
           id="title1"
           class="
@@ -40,11 +47,11 @@
             z-10
             -mb-24
             text-white
+            max-w-xs
           "
           style="top: calc(50% - 40px)"
-        >
-          Sharmin & Syafiq<br />are getting<br />married.
-        </div>
+          [innerHTML]="data.header"
+        ></div>
         <div class="max-w-xs">
           <img src="assets/1.jpg" alt="" />
         </div>
@@ -54,30 +61,29 @@
         <div class="font-cormorant-garamond text-base pt-11 tracking-widest">
           <div class="">&centerdot; DATE &centerdot;</div>
         </div>
-        <div class="font-cormorant-garamond text-xl pt-3">
-          04 September 2021<br />Saturday<br />11:00am - 4:00pm
-        </div>
+        <div
+          class="font-cormorant-garamond text-xl pt-3"
+          [innerHTML]="data.dateDetail"
+        ></div>
       </div>
       <!-- venue -->
       <div class="fade-in-slow px-10 text-center">
         <div class="font-cormorant-garamond text-base pt-11 tracking-widest">
           <div class="">&centerdot; VENUE &centerdot;</div>
         </div>
-        <div class="font-cormorant-garamond text-xl pt-3">
-          Waterfall Lounge @ Furama Riverfront<br />405 Havelock Rd<br />Singapore 169633
-        </div>
         <div
-          class="font-cormorant-garamond pt-2 text-xl text-beige underline"
-        >
-          <a
-            href="https://www.google.com/maps/dir//furama+riverfront/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31da1977b165dfcd:0x939e0c251389175e?sa=X&ved=2ahUKEwjb55iNv5_yAhXUfH0KHe36C8oQ9RcweHoFCMEBEAQ"
-            >Get Directions</a
-          >
+          class="font-cormorant-garamond text-xl pt-3"
+          [innerHTML]="data.venue"
+        ></div>
+        <div class="font-cormorant-garamond pt-2 text-xl text-beige underline">
+          <a [attr.href]="data.directions">Get Directions</a>
         </div>
       </div>
     </section>
     <section id="details" class="fade-in-slow px-10 pt-11 text-center">
-      <div class="font-cormorant-garamond text-base tracking-widest">&centerdot; SCHEDULE &centerdot;</div>
+      <div class="font-cormorant-garamond text-base tracking-widest">
+        &centerdot; SCHEDULE &centerdot;
+      </div>
       <div class="" *ngFor="let item of schedule">
         <div class="pt-3 grid grid-cols-3 gap-4">
           <div class="font-cormorant-garamond text-xl text-right">
@@ -87,7 +93,10 @@
             <div class="font-cormorant-garamond text-xl">
               {{ item.name }}
             </div>
-            <div class="font-cormorant-garamond text-lg pt-2 italic">
+            <div
+              *ngIf="item.detail"
+              class="font-cormorant-garamond text-lg pt-2 italic"
+            >
               {{ item.detail }}
             </div>
           </div>
@@ -130,18 +139,13 @@
           <input
             type="hidden"
             name="accessKey"
-            value="f942d721-68af-4e88-9a1e-229bb14c91e6"
+            [attr.value]="data.staticFormToken"
           />
           <!-- Required -->
           <div class="pt-4">
             <label
               for="name"
-              class="
-                block
-                text-base
-                font-medium font-cormorant-garamond
-
-              "
+              class="block text-base font-medium font-cormorant-garamond"
               >Name</label
             >
             <div class="mt-1 relative rounded-md shadow-sm">
@@ -163,13 +167,9 @@
           <div class="pt-2">
             <label
               for="vaccinated"
-              class="
-                font-cormorant-garamond
-                block
-                text-base
-                font-medium
-              "
-              >Will you be fully vaccinated two weeks before 4th September?</label
+              class="font-cormorant-garamond block text-base font-medium"
+              >Will you be fully vaccinated two weeks before 4th
+              September?</label
             >
             <select
               [(ngModel)]="vaccinated"

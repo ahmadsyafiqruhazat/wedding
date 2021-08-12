@@ -1,88 +1,49 @@
 import { Component, OnInit } from '@angular/core';
+import { SheetService } from '../sheet.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   title = 'wedding';
-  schedule: {
-    name: string;
-    time: string;
-    detail: string;
-  }[] = [
-    {
-      name: 'Arrival',
-      time: '11:00am',
-      detail: 'Please arrive at 11:00am. Guests are to be seated by 11:30am.',
-    },
-    {
-      name: "Groom's Walk In",
-      time: '11:45am',
-      detail: '',
-    },
-    {
-      name: "Bride's Walk In",
-      time: '11:50am',
-      detail: 'Here comes the bride!',
-    },
-    {
-      name: 'Solemnization & Ring Ceremony',
-      time: '12:00pm - 1:00pm',
-      detail:
-        'The Solemnization will start promptly at 12:00pm and will go on until roughly 1:00pm.',
-    },
-    {
-      name: 'Appetizer & Soup',
-      time: '12:45pm',
-      detail: '',
-    },
-    {
-      name: 'Main Course',
-      time: '1:30pm',
-      detail: '',
-    },
-    {
-      name: 'Second Walk In',
-      time: '2:15pm',
-      detail: '',
-    },
-    {
-      name: 'Photo Taking',
-      time: '2:30pm',
-      detail: '',
-    },
-    {
-      name: 'Dessert',
-      time: '3:00pm',
-      detail: '',
-    },
-    {
-      name: 'Final Walk In & Cake Cutting',
-      time: '3:30pm - 4:00pm',
-      detail: '',
-    },
-  ];
+  data: any;
+  schedule: any;
   vaccinated: string = '';
   countDownConfigDays: any;
   countDownConfig: any;
-  isDDay: any;
-  constructor() {
-    this.countDownConfig = {
-      stopTime: new Date("2021/09/04").getTime(),
-      format: 'mm \'minutes\' ss \'seconds\''
-    }
-    this.countDownConfigDays = {
-      stopTime: new Date("2021/09/04").getTime(),
-      format: 'dd \'days\' hh \'hours\' '
-    }
-    this.isDDay = new Date() >= new Date("2021/09/04") ? true : false;
+  isDDay = false;
+  constructor(private sheet: SheetService) {
+    sheet.getData().subscribe((res) => {
+      this.data = {};
+      res.values[0].forEach((key, idx) => {
+        this.data[key] = res.values[1][idx];
+      });
+      this.countDownConfig = {
+        stopTime: new Date(this.data.date).getTime(),
+        format: "mm 'minutes' ss 'seconds'",
+      };
+      this.countDownConfigDays = {
+        stopTime: new Date(this.data.date).getTime(),
+        format: "dd 'days' hh 'hours' ",
+      };
+      this.isDDay = new Date() >= new Date(this.data.date) ? true : false;
+    });
+
+    sheet.getSchedule().subscribe((res) => {
+      let [keys, ...rows] = res.values;
+      this.schedule = rows.map((row) => {
+        let item: any = {};
+        keys.forEach((key, idx) => {
+          item[key] = row[idx];
+        });
+        return item;
+      });
+    });
   }
   setVaccinated(val: any) {
     this.vaccinated = val;
   }
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
