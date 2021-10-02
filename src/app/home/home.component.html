@@ -40,8 +40,8 @@
           id="title1"
           class="
             absolute
-            text-center
-            font-cormorant-garamond
+            text-left
+            font-great-vibes
             py-8
             text-3xl
             z-10
@@ -49,9 +49,25 @@
             text-white
             max-w-xs
           "
-          style="top: calc(10% - 10px)"
+          style="top: calc(13% - 10px)"
           [innerHTML]="data.header"
         ></div>
+        <div
+        id="title2"
+        class="
+          absolute
+          text-left
+          font-cormorant-garamond
+          py-8
+          text-lg
+          z-10
+          -mb-24
+          text-white
+          max-w-xs
+        "
+        style="top: calc(18%)"
+        [innerHTML]="data.subheader"
+      ></div>
         <div class="max-w-xs">
           <img src="assets/4.jpeg" alt="" />
         </div>
@@ -169,8 +185,7 @@
             <label
               for="vaccinated"
               class="font-cormorant-garamond block text-base font-medium"
-              >Will you be fully vaccinated two weeks before 4th
-              December?</label
+              >Will you be fully vaccinated?</label
             >
             <select
               [(ngModel)]="vaccinated"

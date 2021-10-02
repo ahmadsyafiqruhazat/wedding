@@ -37,6 +37,6 @@ export class SheetService {
   }
 
   getData(type: string): Observable<SheetObject> {
-    return this.get('data', 'A1:B7', 'COLUMNS', type);
+    return this.get('data', 'A1:B8', 'COLUMNS', type);
   }
 }

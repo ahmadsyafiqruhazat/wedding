@@ -9,7 +9,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'cormorant-garamond': ['"Cormorant Garamond"', 'serif']
+        'cormorant-garamond': ['"Cormorant Garamond"', 'serif'],
+        'great-vibes': ['"Great Vibes"', 'serif']
       },
       colors: {
         'beige': '#b0a194',
