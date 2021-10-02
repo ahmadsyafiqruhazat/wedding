@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SheetService } from '../sheet.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,20 @@ export class HomeComponent implements OnInit {
   countDownConfigDays: any;
   countDownConfig: any;
   isDDay = false;
-  constructor(private sheet: SheetService) {
-    sheet.getData().subscribe((res) => {
+  type: any;
+  constructor(private sheet: SheetService,
+    private route: ActivatedRoute
+    ) {
+  }
+  setVaccinated(val: any) {
+    this.vaccinated = val;
+  }
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.type = params['type'];
+    });
+    this.type = this.type ? this.type : 'hadi';
+    this.sheet.getData(this.type).subscribe((res) => {
       this.data = {};
       res.values[0].forEach((key, idx) => {
         this.data[key] = res.values[1][idx];
@@ -31,7 +44,7 @@ export class HomeComponent implements OnInit {
       this.isDDay = new Date() >= new Date(this.data.date) ? true : false;
     });
 
-    sheet.getSchedule().subscribe((res) => {
+    this.sheet.getSchedule(this.type).subscribe((res) => {
       let [keys, ...rows] = res.values;
       this.schedule = rows.map((row) => {
         let item: any = {};
@@ -42,8 +55,4 @@ export class HomeComponent implements OnInit {
       });
     });
   }
-  setVaccinated(val: any) {
-    this.vaccinated = val;
-  }
-  ngOnInit(): void {}
 }

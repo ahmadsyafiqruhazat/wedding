@@ -6,6 +6,7 @@ import { SuccessComponent } from './success/success.component';
 
 const routes: Routes = [
   { path: 'success', component: SuccessComponent },
+  { path: ':type', component: HomeComponent },
   { path: '**', component: HomeComponent },
 ];
 

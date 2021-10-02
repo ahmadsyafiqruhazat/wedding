@@ -12,7 +12,10 @@ export interface SheetObject {
   providedIn: 'root',
 })
 export class SheetService {
-  sheetId = '16_drSz13ULY4BF4492rrz2TdrNqrKTvo4qsXG_Tpyck';
+  sheetId: any = {
+    "hadi" : '16_drSz13ULY4BF4492rrz2TdrNqrKTvo4qsXG_Tpyck',
+    "adinah": '144PFp2VGOMTgrC402qnUx4iJLSrAmFOzLjnm-yyHA3A',
+  };
   sheetKey = 'AIzaSyATFA3fWwgQ9zREQLhvNEe1zVhKkBiMkcA';
 
   constructor(private http: HttpClient) {}
@@ -20,19 +23,20 @@ export class SheetService {
   get(
     tabName: string,
     cellRange: string,
-    majorDimension: string
+    majorDimension: string,
+    type: string,
   ): Observable<SheetObject> {
     return this.http.get<SheetObject>(
-      `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/${tabName}!${cellRange}?majorDimension=${majorDimension}&key=${this.sheetKey}`,
+      `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId[type]}/values/${tabName}!${cellRange}?majorDimension=${majorDimension}&key=${this.sheetKey}`,
       {}
     );
   }
 
-  getSchedule(): Observable<SheetObject> {
-    return this.get('schedule', 'A1:C', 'ROWS');
+  getSchedule(type: string): Observable<SheetObject> {
+    return this.get('schedule', 'A1:C', 'ROWS', type);
   }
 
-  getData(): Observable<SheetObject> {
-    return this.get('data', 'A1:B7', 'COLUMNS');
+  getData(type: string): Observable<SheetObject> {
+    return this.get('data', 'A1:B7', 'COLUMNS', type);
   }
 }
