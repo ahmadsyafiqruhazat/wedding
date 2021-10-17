@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   countDownConfig: any;
   isDDay = false;
   type: any;
+  attending: any;
   constructor(private sheet: SheetService,
     private route: ActivatedRoute
     ) {
