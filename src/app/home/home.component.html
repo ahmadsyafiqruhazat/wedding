@@ -1,13 +1,7 @@
 <div *ngIf="data" class="container max-w-screen-sm mx-auto">
   <header>
     <div
-      class="
-        text-center
-        font-cormorant-garamond
-        pt-6
-        text-3xl text-beige
-        flex-col
-      "
+      class="text-center font-cormorant-garamond pt-6 text-3xl text-beige flex-col"
     >
       <countdown
         *ngIf="!isDDay && data.date"
@@ -38,17 +32,7 @@
       <div class="relative flex justify-center items-center pt-8">
         <div
           id="title1"
-          class="
-            absolute
-            text-center
-            font-cormorant-garamond
-            py-8
-            text-3xl
-            z-10
-            -mb-24
-            text-white
-            max-w-xs
-          "
+          class="absolute text-center font-cormorant-garamond py-8 text-3xl z-10 -mb-24 text-white max-w-xs"
           style="top: calc(50% - 40px)"
           [innerHTML]="data.header"
         ></div>
@@ -110,16 +94,7 @@
 
       <div class="relative flex justify-center items-center pt-8">
         <div
-          class="
-            absolute
-            text-center
-            font-cormorant-garamond
-            py-8
-            text-3xl
-            z-10
-            -mb-24
-            text-white
-          "
+          class="absolute text-center font-cormorant-garamond py-8 text-3xl z-10 -mb-24 text-white"
           style="top: calc(50% - 40px)"
         >
           <!-- image -->
@@ -130,63 +105,93 @@
         </div>
       </div>
       <div>
-        <form
-          ngNoForm
-          action="https://form2channel.com"
-          method="post"
-        >
+        <form ngNoForm action="https://form2channel.com" method="post">
           <!-- Replace with accesKey sent to your email -->
-          <input type="hidden" name="formto_googlesheets" value="luvnenvy@gmail.com">
+          <input
+            type="hidden"
+            name="formto_googlesheets"
+            value="luvnenvy@gmail.com"
+          />
           <!-- Required -->
           <div class="pt-4">
             <label
               for="name"
               class="block text-base font-medium font-cormorant-garamond"
-              >Name</label
+              >Your first name and last name?</label
             >
             <div class="mt-1 relative rounded-md shadow-sm">
               <input
                 type="text"
                 name="name"
                 id="name"
-                class="
-                  focus:ring-indigo-500 focus:border-indigo-500
-                  block
-                  w-full
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
-          <div class="pt-2">
+          <div class="pt-4">
+            <label
+              for="additionalGuests"
+              class="block text-base font-medium font-cormorant-garamond"
+              >Are you bringing additional guests?</label
+            >
+            <label
+              for="additionalGuests2"
+              class="block text-sm font-thin font-cormorant-garamond"
+              >If you are responding on
+              behalf of your family or partner, please indicate them as guests
+              below. If your guests will RSVP for themselves, select "No"
+              here.</label
+            >
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <select
+                name="additionalGuests"
+                class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              >
+                <option>No</option>
+                <option>1 guest</option>
+                <option>2 guests</option>
+                <option>3 guests</option>
+                <option>4 guests</option>
+                <option>5 guests</option>
+              </select>
+            </div>
           </div>
+          <div class="pt-4">
+            <label
+              for="additionalGuestsName"
+              class="block text-base font-medium font-cormorant-garamond"
+              >Please fill in all your guests' names here if applicable.</label
+            >
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <input
+                type="text"
+                name="additionalGuestsName"
+                id="additionalGuestsName"
+                class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              />
+            </div>
+          </div>
+          <div class="pt-4">
+            <label
+              for="remarks"
+              class="block text-base font-medium font-cormorant-garamond"
+              >Any Remarks?</label
+            >
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <input
+                type="text"
+                name="remarks"
+                id="remarks"
+                class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              />
+            </div>
+          </div>
+          <div class="pt-2"></div>
           <div class="pt-2">
             <input
               value="Submit"
               type="submit"
-              class="
-                font-cormorant-garamond
-                group
-                relative
-                w-full
-                flex
-                justify-center
-                py-2
-                px-4
-                border border-transparent
-                text-base
-                font-medium
-                rounded-md
-                text-white
-                bg-beige
-                hover:bg-gray-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-gray-500
-              "
+              class="font-cormorant-garamond group relative w-full flex justify-center py-2 px-4 border border-transparent text-base font-medium rounded-md text-white bg-beige hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             />
           </div>
           <input
