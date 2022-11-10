@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { SheetService } from '../sheet.service';
 
+const CountdownTimeUnits: Array<[string, number]> = [
+  ['Y', 1000 * 60 * 60 * 24 * 365], // years
+  ['M', 1000 * 60 * 60 * 24 * 30], // months
+  ['D', 1000 * 60 * 60 * 24], // days
+  ['H', 1000 * 60 * 60], // hours
+];
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,7 +34,21 @@ export class HomeComponent implements OnInit {
       };
       this.countDownConfigDays = {
         stopTime: new Date(this.data.date).getTime(),
-        format: "dd 'days' hh 'hours' ",
+        format: `MM months DD days HH hours`,
+        formatDate: ({ date, formatStr }: {date:any, formatStr: any}) => {
+          let duration = Number(date || 0);
+    
+          return CountdownTimeUnits.reduce((current, [name, unit]) => {
+            if (current.indexOf(name) !== -1) {
+              const v = Math.floor(duration / unit);
+              duration -= v * unit;
+              return current.replace(new RegExp(`${name}+`, 'g'), (match: string) => {
+                return v.toString().padStart(match.length, '0');
+              });
+            }
+            return current;
+          }, formatStr);
+        },
       };
       this.isDDay = new Date() >= new Date(this.data.date) ? true : false;
     });

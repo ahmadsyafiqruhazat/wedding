@@ -132,15 +132,11 @@
       <div>
         <form
           ngNoForm
-          action="https://api.staticforms.xyz/submit"
+          action="https://form2channel.com"
           method="post"
         >
           <!-- Replace with accesKey sent to your email -->
-          <input
-            type="hidden"
-            name="accessKey"
-            [attr.value]="data.staticFormToken"
-          />
+          <input type="hidden" name="formto_googlesheets" value="luvnenvy@gmail.com">
           <!-- Required -->
           <div class="pt-4">
             <label
@@ -165,41 +161,7 @@
             </div>
           </div>
           <div class="pt-2">
-            <label
-              for="vaccinated"
-              class="font-cormorant-garamond block text-base font-medium"
-              >Will you be fully vaccinated two weeks before 4th
-              September?</label
-            >
-            <select
-              [(ngModel)]="vaccinated"
-              id="vaccinated"
-              name="vaccinated"
-              class="
-                font-cormorant-garamond
-                mt-1
-                block
-                w-full
-                py-2
-                px-3
-                border border-gray-300
-                bg-white
-                rounded-md
-                shadow-sm
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
-                sm:text-sm
-              "
-            >
-              <option [ngValue]="'Yes'">Yes</option>
-              <option [ngValue]="'No'">No</option>
-            </select>
           </div>
-          <input
-            type="hidden"
-            id="$isVaccinated"
-            name="$isVaccinated"
-            value="{{ vaccinated }}"
-          />
           <div class="pt-2">
             <input
               value="Submit"
@@ -230,7 +192,7 @@
           <input
             type="hidden"
             name="redirectTo"
-            value="http://thesharminandsyafiqwedding.com/success"
+            value="http://thefalishaandafiqwedding.com/success"
           />
         </form>
       </div>
